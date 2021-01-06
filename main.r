@@ -1,4 +1,5 @@
 #!/usr/bin/env Rscript
+
 args = commandArgs(trailingOnly=TRUE)
 
 #On first run uncomment this line!
@@ -17,41 +18,42 @@ if (length(args)==0) {
 	stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [calibration_data.csv] [Sample_signal_data.csv] [(OPTIONAL)output_file.csv]", call.=FALSE)
 } else{
 # default output file
-  args[2] = "out.txt"
+  args[3] = "out.txt"
 }
 
 #Read calibration data
 calibration = read.csv(args[1], header=TRUE)
 
+calibration
 
 #####Calculation
 
 calibration.lm <- lm(Signal ~ Conc, data = calibration)
 
-summary(calibration.lm)
 
-###Make Nice Looking Plot
+intercept = coef(calibration.lm)[1]
 
-xplacement <- (min(calibration$Conc) + ((max(calibration$Conc) - min(calibration$Conc))/2)) * (1/2) #The last value is a fraction so that you can adjust to your liking
+slope = coef(calibration.lm)[2]
+
+
+
+###########Make Nice Looking Plot#############
+
+#Variables that place the formula in the plot according to the axis values
+xplacement <- (min(calibration$Conc) + ((max(calibration$Conc) - min(calibration$Conc))/2)) * (3/4) #The last value is a fraction so that you can adjust to your liking
 xplacement
 
-yplacement <- max(calibration$Signal) - ((min(calibration$Signal) + ((max(calibration$Signal) - min(calibration$Signal))/2)) * (1/4))
+yplacement <- max(calibration$Signal) - ((min(calibration$Signal) + ((max(calibration$Signal) - min(calibration$Signal))/2)) * (1/16))
 yplacement
 
-#yplacement <- (max(calibration$Signal)) + (median(calibration$Signal)/4)
-
-#yplacement
-
-calibration.plot<-ggplot(data = calibration, aes(x=Conc, y=Signal))+
-                     geom_point()
+#Make the plot
+calibration.plot<-ggplot(data = calibration, aes(x=Conc, y=Signal))+ geom_point()
 
 calibration.plot <- calibration.plot + geom_smooth(method="lm", col="black")
 
-#calibration.plot <- calibration.plot + stat_regline_equation(label.x = 3, label.y = 7)
-
 lm_eqn <- function(calibration){
  #   m <- lm(Signal ~ Conc, data = calibration);
-    eq <- substitute(italic(y) == a + b %.% italic(x)*"   "~~italic(r)^2~"="~r2,
+    eq <- substitute(italic(Signal) == a + b %.% italic(Conc)*"  "~~italic(r)^2~"="~r2,
          list(a = format(unname(coef(calibration.lm)[1]), digits = 4),
               b = format(unname(coef(calibration.lm)[2]), digits = 4),
              r2 = format(summary(calibration.lm)$r.squared, digits = 3)))
@@ -60,4 +62,18 @@ lm_eqn <- function(calibration){
 
 calibration.plot <- calibration.plot + geom_text(x = xplacement, y = yplacement, label = lm_eqn(eq), parse = TRUE)
 
-calibration.plot
+calibration.plot #ADD Print to the name of the calibration file.svg!!!!!
+
+
+####Calculation for Samples
+
+samples = read.csv(args[2], header=TRUE)
+
+#Calculates values and puts them in column ConcCalc
+samples$ConcCalc <- (samples$Signal - intercept) / slope
+
+sample
+
+#Append values to a CSV with:
+#Sample,[name equal to calibration csv name]
+#That way you can run the script as many times as needed, and it will append only the line with the new values, and have just one CSV for all compounds.
