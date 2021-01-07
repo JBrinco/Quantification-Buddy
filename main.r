@@ -5,11 +5,13 @@ args = commandArgs(trailingOnly=TRUE)
 #On first run uncomment this line!
 #install.packages('pacman', repos='http://cran.us.r-project.org')
 
-pacman::p_load(pacman, ggplot2, dplyr, broom)
+pacman::p_load(pacman, ggplot2, dplyr, broom, stringr)
 
-library(ggplot2)
+library(ggplot2) ###Ver quais sao redundantes
 library(dplyr)
 library(broom)
+library(stringr)
+
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
@@ -24,9 +26,46 @@ if (length(args)==0) {
 #Read calibration data
 calibration = read.csv(args[1], header=TRUE)
 
-calibration
 
-#####Calculation
+names(calibration)[1]
+
+#Detects SignalIS and ConcIS strings in the header of the calibration. any() function returns true if any of the values in the vector created by str_detect() are true. Will remove NA values with na.rm.
+SIS <- any(str_detect(names(calibration), "(?i)SignalIS", negate = FALSE), na.rm = TRUE)
+CIS <- any(str_detect(names(calibration), "(?i)ConcIS", negate = FALSE), na.rm = TRUE)
+
+
+###############################
+######MAIN BODY################
+#This will run Internal standard calculations if the CIS and SIS columns are present. Will do nothing otherwise.
+
+if (SIS) {
+	if (CIS) {
+		#CORRE O COISO
+		#Tudo aqui dentro!
+		print("Found both!!!")
+
+
+
+		} else {
+		print("SignalIS column found but not ConcIS. Are you tying to trick me? Check your CSV!!!")
+		}
+} else if (CIS) {
+	print("ConcIS column found but not SignalIS. Are you trying to trick me? Check your CSV!!!")
+} else {
+	print("Found no Internal Standard record.")
+	#Correr Tudo! Sem IS
+
+}
+
+
+
+
+
+
+
+
+
+#####Calculation no IS
 
 calibration.lm <- lm(Signal ~ Conc, data = calibration)
 
@@ -62,7 +101,14 @@ lm_eqn <- function(calibration){
 
 calibration.plot <- calibration.plot + geom_text(x = xplacement, y = yplacement, label = lm_eqn(eq), parse = TRUE)
 
+compound_name <- gsub("\\.csv", "\\.svg", args[1])
+compound_name
+
+svg(compound_name)
+
 calibration.plot #ADD Print to the name of the calibration file.svg!!!!!
+
+dev.off()
 
 
 ####Calculation for Samples
@@ -72,7 +118,11 @@ samples = read.csv(args[2], header=TRUE)
 #Calculates values and puts them in column ConcCalc
 samples$ConcCalc <- (samples$Signal - intercept) / slope
 
-sample
+samples
+
+samples <- subset (samples, select = -Signal)
+
+samples
 
 #Append values to a CSV with:
 #Sample,[name equal to calibration csv name]
