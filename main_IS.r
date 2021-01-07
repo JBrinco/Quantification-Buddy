@@ -27,11 +27,15 @@ if (length(args)==0) {
 calibration = read.csv(args[1], header=TRUE)
 
 
-names(calibration)[1]
+#names(calibration)[1]
 
 #Detects SignalIS and ConcIS strings in the header of the calibration. any() function returns true if any of the values in the vector created by str_detect() are true. Will remove NA values with na.rm.
 SIS <- any(str_detect(names(calibration), "(?i)SignalIS", negate = FALSE), na.rm = TRUE)
 CIS <- any(str_detect(names(calibration), "(?i)ConcIS", negate = FALSE), na.rm = TRUE)
+
+
+
+
 
 
 ###############################
@@ -40,32 +44,10 @@ CIS <- any(str_detect(names(calibration), "(?i)ConcIS", negate = FALSE), na.rm =
 
 if (SIS) {
 	if (CIS) {
-		#CORRE O COISO
-		#Tudo aqui dentro!
-		print("Found both!!!")
+		print("Found Everything! Hurray!!!!")
 
 
-
-		} else {
-		print("SignalIS column found but not ConcIS. Are you tying to trick me? Check your CSV!!!")
-		}
-} else if (CIS) {
-	print("ConcIS column found but not SignalIS. Are you trying to trick me? Check your CSV!!!")
-} else {
-	print("Found no Internal Standard record.")
-	#Correr Tudo! Sem IS
-
-}
-
-
-
-
-
-
-
-
-
-#####Calculation no IS
+#calibration$adj_conc <- (calibration$Conc / calibration$ConcIS)
 
 calibration.lm <- lm(Signal ~ Conc, data = calibration)
 
@@ -118,6 +100,7 @@ dev.off()
 
 
 
+
 ####Calculation for Samples
 
 samples = read.csv(args[2], header=TRUE)
@@ -129,12 +112,9 @@ compound_name <- (gsub("\\.csv", "", args[1]))
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name_new"
 
-samples
-
 #Calculates values and puts them in column temp_name
 samples$temp_name <- (samples$temp_name_new - intercept) / slope
 samples
-
 
 
 #Read csv file which already has the other results
@@ -150,3 +130,18 @@ colnames(results)[colnames(results) == "temp_name"] <- compound_name
 results
 
 write.csv(results, file = args[3], row.names = FALSE, quote = FALSE)
+
+
+
+
+
+
+		} else {
+		print("SignalIS column found but not ConcIS. Are you tying to trick me? Check your CSV!!!")
+		}
+} else if (CIS) {
+	print("ConcIS column found but not SignalIS. Are you trying to trick me? Check your CSV!!!")
+} else {
+	print("Found no Internal Standard record.")
+
+}
