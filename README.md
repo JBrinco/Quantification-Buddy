@@ -25,7 +25,7 @@ An example is provided for each file in this repository. Please note that the co
 
 The program will output, in adition to all the juicy data you need, a graphical representation of your calibration curve. Its format can be changed in the code, obviously.
 
-![Calibration for Captan](Captan.pdf)
+![Image of calibration curve for Captan](Captan.png)
 
 ## Development
 
