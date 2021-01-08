@@ -27,18 +27,11 @@ CIS <- any(str_detect(names(calibration), "ConcIS", negate = FALSE), na.rm = TRU
 
 if (SIS) {
 	if (CIS) {
-		print("Found Everything! Hurray!!!!")
-
-		} else {
-			stop("SignalIS column found but not ConcIS. Are you tying to trick me? Please check your CSV! :)")
-		}
-} else if (CIS) {
-	stop("ConcIS column found but not SignalIS. Are you trying to trick me? Please check your CSV! :)")
+		print("Internal Standard data found. This script will ignore them! Should you be running qbuddy_IS instead?")
 } else {
-	stop("Found no Internal Standard record. Please use the qbuddy.r script instead of this one.")
-
+	print("Found no Internal Standard record. The program will run as expected.")
 }
-
+}
 
 ###############################
 ######MAIN BODY################
@@ -50,10 +43,8 @@ if (SIS) {
 
 
 
-calibration$adj_conc <- (calibration$Conc / calibration$ConcIS)
-calibration$adj_signal <- (calibration$Signal / calibration$SignalIS)
 
-calibration.lm <- lm(adj_signal ~ adj_conc, data = calibration)
+calibration.lm <- lm(Signal ~ Conc, data = calibration)
 
 
 intercept = coef(calibration.lm)[1]
@@ -87,20 +78,20 @@ write.csv(cal_results, file = args[3], row.names = FALSE, quote = FALSE)
 ###########Make Nice Looking Plot and print to PDF#############
 
 #Variables that place the formula in the plot according to the axis values
-xplacement <- (min(calibration$adj_conc) + ((max(calibration$adj_conc) - min(calibration$adj_conc))/2)) * (3/4) #The last value is a fraction so that you can adjust to your liking
+xplacement <- (min(calibration$Conc) + ((max(calibration$Conc) - min(calibration$Conc))/2)) * (3/4) #The last value is a fraction so that you can adjust to your liking
 
-yplacement <- max(calibration$adj_signal) - ((min(calibration$adj_signal) + ((max(calibration$adj_signal) - min(calibration$adj_signal))/2)) * (1/16))
+yplacement <- max(calibration$Signal) - ((min(calibration$Signal) + ((max(calibration$Signal) - min(calibration$Signal))/2)) * (1/16))
 
 #Make the plot
-calibration.plot<-ggplot(data = calibration, aes(x=adj_conc, y=adj_signal))+ geom_point()
+calibration.plot<-ggplot(data = calibration, aes(x=Conc, y=Signal))+ geom_point()
 
-calibration.plot <- calibration.plot + labs(title = compound_name, caption = "https://github.com/JBrinco/Quantification-Buddy", x = "Adjusted Concentration", y = "Adjusted Signal")
+calibration.plot <- calibration.plot + labs(title = compound_name, caption = "https://github.com/JBrinco/Quantification-Buddy", x = "Concentration", y = "Signal")
 
 calibration.plot <- calibration.plot + geom_smooth(method="lm", col="black")
 
 lm_eqn <- function(calibration){
  #   m <- lm(Signal ~ Conc, data = calibration);
-    eq <- substitute(italic(Adj.Signal) == a + b %.% italic(Adj.Conc)*"  "~~italic(r)^2~"="~r2,
+    eq <- substitute(italic(Signal) == a + b %.% italic(Conc)*"  "~~italic(r)^2~"="~r2,
          list(a = format(unname(coef(calibration.lm)[1]), digits = 4),
               b = format(unname(coef(calibration.lm)[2]), digits = 4),
              r2 = format(summary(calibration.lm)$r.squared, digits = 3)))
@@ -120,8 +111,6 @@ dev.off()
 
 
 
-
-
 ####Calculation for Samples
 
 samples = read.csv(args[1], header=TRUE)
@@ -130,17 +119,9 @@ samples = read.csv(args[1], header=TRUE)
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name"
 
-#If SignalIS column is not present in sample file, return an error.
-SamplesSignalIS <- any(str_detect(names(samples), "SignalIS", negate = FALSE), na.rm = TRUE)
-if (! SamplesSignalIS) {
-	stop("Did not find SignalIS column in your sample signal file. I am not able to calculate adjusted signals for your samples!")
-}
-
-#Calculate adjusted signal based on SampleIS from samples.
-samples$adj_signal <- (samples$temp_name / samples$SignalIS)
 
 #Calculates values and puts them in column temp_results
-samples$temp_results <- (((samples$adj_signal - intercept) / slope) * samples$ConcIS)
+samples$temp_results <- ((samples$Signal - intercept) / slope)
 
 
 #Read csv file which already has the other results
