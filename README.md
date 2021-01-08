@@ -16,13 +16,13 @@ A simple R script that performs a calibration with external standardization (sol
 
 An example is provided for each file in this repository. Please note that the columns must have the exact same name (case sensitive).
 
-`__Sample_signal.csv__` This is the file that will have the sample names and the signals for each sample. You can have as many columns as you want, but the program will look for the one with EXACTLY the same name as the `Calibration_signal.csv` file (below). if you are using the `qbuddy_IS.r` script, It will also look for two columns named ConcIS and SignalIS, which are the concentration and signal of your internal standard, respectivly.
+`**Sample_signal.csv**` This is the file that will have the sample names and the signals for each sample. You can have as many columns as you want, but the program will look for the one with EXACTLY the same name as the `Calibration_signal.csv` file (below). if you are using the `qbuddy_IS.r` script, It will also look for two columns named ConcIS and SignalIS, which are the concentration and signal of your internal standard, respectivly.
 
-`__Calculated_results.__` The output file where the data actually goes. This should just have the sample names in the exact same order as the `Sample_signal.csv` file.
+`**Calculated_results.**` The output file where the data actually goes. This should just have the sample names in the exact same order as the `Sample_signal.csv` file.
 
-`__Calibration_output.__` Where the calibration parameters go. Check the example file given.
+`**Calibration_output.**` Where the calibration parameters go. Check the example file given.
 
-`__Calibration_signal.csv__` This is where your calibration data for a single compound are. The name of this file is __extremely__ important. It will determine the name of all outputs, and should be exactly the same as the corresponding column in `Sample_signal.csv` for that compound. The example given here is for a compound named Captan. The program will look for a column named Captan in `Sample_signal.csv`, and will write the output in `calculated_results`to a new column named Captan. All of this is case sensitive.
+`**Calibration_signal.csv**` This is where your calibration data for a single compound are. The name of this file is __extremely__ important. It will determine the name of all outputs, and should be exactly the same as the corresponding column in `Sample_signal.csv` for that compound. The example given here is for a compound named Captan. The program will look for a column named Captan in `Sample_signal.csv`, and will write the output in `calculated_results`to a new column named Captan. All of this is case sensitive.
 
 ## Development
 
