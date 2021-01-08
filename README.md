@@ -21,6 +21,12 @@ An example is provided for each file in this repository. Please note that the co
 - `Calibration_output.` Where the calibration parameters go. Check the example file given.
 - `Calibration_signal.csv` This is where your calibration data for a single compound are. The name of this file is __extremely__ important. It will determine the name of all outputs, and should be exactly the same as the corresponding column in `Sample_signal.csv` for that compound. The example given here is for a compound named Captan. The program will look for a column named Captan in `Sample_signal.csv`, and will write the output in `calculated_results`to a new column named Captan. All of this is case sensitive.
 
+## Graphical Output
+
+The program will output, in adition to all the juicy data you need, a graphical representation of your calibration curve. Its format can be changed in the code, obviously.
+
+![Calibration for Captan](Captan.pdf)
+
 ## Development
 
 - [x] Basic functionality with one csv input of calibration and another of sample signal values. Outputs results to CSV.
