@@ -34,6 +34,7 @@ The program will output, in addition to all the juicy data you need, a graphical
 - [x] Can process multiple calibrations at once, and one single sample signal file with values for all calibrations.
 - [x] Can read columns and decide if internal standard was used or not. (two different scripts).
 - [ ] Finds rows in which samples have the same name and calculates the median and standard deviation.
+- [ ] Add support for Recovery calculation and adjustment of sample concentration based on recovery percentage.
 - [ ] Adapted to be used interactively with RStudio.
 - [ ] Calculates Cook's distance, outputs strange data points for the user to check, and offers option to automatically remove outliers, both in calibration and samples.
 - [ ] Better and prettier publication grade scatter plots.
@@ -41,4 +42,4 @@ The program will output, in addition to all the juicy data you need, a graphical
 
 ## License
 
-This project is licensed under GPL v3. You are free to use, modify, distribute, _etc._ just as long as you don't incorporate it into proprietary code, basically (why you would want to is beyond me). Check the license for details.
+This project is licensed under GPL v3. You are free to use, modify, distribute, _etc._ just as long as you don't incorporate it into proprietary code, basically . Check the license for details.
