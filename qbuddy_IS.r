@@ -62,8 +62,14 @@ slope = coef(calibration.lm)[2]
 
 rsquared = summary(calibration.lm)$r.squared
 
+res_standard_error <- sigma(calibration.lm)
 
-merit <- c(slope, intercept, rsquared)
+ISConcentration <- calibration$ConcIS[1]
+
+LOD <- ((3.3 * res_standard_error) / slope) * ISConcentration
+LOQ <- ((10 * res_standard_error) / slope) * ISConcentration
+
+merit <- c(slope, intercept, rsquared, LOD, LOQ)
 merit <- round(merit, digits = 5) #Rounds all values to 5 decimal places
 
 
@@ -125,7 +131,6 @@ dev.off()
 ####Calculation for Samples
 
 samples = read.csv(args[1], header=TRUE)
-
 
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name"

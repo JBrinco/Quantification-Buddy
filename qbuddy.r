@@ -53,8 +53,15 @@ slope = coef(calibration.lm)[2]
 
 rsquared = summary(calibration.lm)$r.squared
 
+res_standard_error <- sigma(calibration.lm)
 
-merit <- c(slope, intercept, rsquared)
+LOD <- ((3.3 * res_standard_error) / slope)
+LOQ <- ((10 * res_standard_error) / slope)
+
+
+
+
+merit <- c(slope, intercept, rsquared, LOD, LOQ)
 merit <- round(merit, digits = 5) #Rounds all values to 5 decimal places
 
 
