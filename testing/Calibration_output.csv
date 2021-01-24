@@ -1,4 +1,6 @@
-Parameters,Captan,Captan.1,Captan.2,Captan
-Slope,3.39594,4774.9065,3.39594,3.39594
-Intercept,-0.41502,-375437.38415,-0.41502,-0.41502
-Rsquared,0.9823,0.83333,0.9823,0.9823
+Parameters,Captan
+Slope,3.39594
+Intercept,-0.41502
+Rsquared,0.9823
+LOD,206.16
+LOQ,624.72728

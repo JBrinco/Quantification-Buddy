@@ -122,14 +122,11 @@ dev.off()
 
 samples = read.csv(args[1], header=TRUE)
 
-
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name"
 
-
 #Calculates values and puts them in column temp_results
 samples$temp_results <- ((samples$Signal - intercept) / slope)
-
 
 #Read csv file which already has the other results
 results = read.csv(args[2], header=TRUE)

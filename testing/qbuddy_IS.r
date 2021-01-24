@@ -2,14 +2,21 @@
 
 args = commandArgs(trailingOnly=TRUE)
 
-pacman::p_load(pacman, ggplot2, stringr)
+pacman::p_load(pacman, ggplot2, stringr, optparse)
 
 
 
 # test if there are enough arguments.
 if (length(args)<=3) {
-	stop("Not enough Arguments! \n Usage: Rscript qbuddy_IS.r [Sample_signal.csv] [calculated_results.csv] [calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE!", call.=FALSE)
+	stop("Not enough Arguments! \n Usage: Rscript qbuddy_IS.r [Sample_signal.csv] [Calculated_results.csv] [Calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE!", call.=FALSE)
 }
+
+######Option Parsing###############
+
+
+
+
+
 
 #Read calibration data
 calibration = read.csv(args[4], header=TRUE)
@@ -19,7 +26,6 @@ compound_name <- (gsub("\\.csv", "", args[4]))
 
 #########################################################
 ##Evaluate input and turn out errors if it is not correct
-
 
 #Detects SignalIS and ConcIS strings in the header of the calibration. any() function returns true if any of the values in the vector created by str_detect() are true. Will remove NA values with na.rm. "(?i)SignalIS" would search case insensitive.
 SIS <- any(str_detect(names(calibration), "SignalIS", negate = FALSE), na.rm = TRUE)
@@ -62,8 +68,14 @@ slope = coef(calibration.lm)[2]
 
 rsquared = summary(calibration.lm)$r.squared
 
+res_standard_error <- sigma(calibration.lm)
 
-merit <- c(slope, intercept, rsquared)
+ISConcentration <- calibration$ConcIS[1]
+
+LOD <- ((3.3 * res_standard_error) / slope) * ISConcentration
+LOQ <- ((10 * res_standard_error) / slope) * ISConcentration
+
+merit <- c(slope, intercept, rsquared, LOD, LOQ)
 merit <- round(merit, digits = 5) #Rounds all values to 5 decimal places
 
 
@@ -125,7 +137,6 @@ dev.off()
 ####Calculation for Samples
 
 samples = read.csv(args[1], header=TRUE)
-
 
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name"

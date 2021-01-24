@@ -8,7 +8,7 @@ pacman::p_load(pacman, ggplot2, stringr)
 
 # test if there are enough arguments.
 if (length(args)<=3) {
-	stop("Not enough Arguments! \n Usage: Rscript qbuddy_IS.r [Sample_signal.csv] [calculated_results.csv] [calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE!", call.=FALSE)
+	stop("Not enough Arguments! \n Usage: Rscript qbuddy_IS.r [Sample_signal.csv] [Calculated_results.csv] [Calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE!", call.=FALSE)
 }
 
 #Read calibration data
