@@ -1,7 +1,7 @@
 # Quantification-Buddy
 
 __This is under development!__
-Quantification using traditional calibration and internal standards in the command line.
+Quantification using traditional calibration and internal standards from the command line.
 
 ## What am I
 
