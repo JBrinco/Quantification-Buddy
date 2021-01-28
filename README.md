@@ -12,7 +12,7 @@ A simple R script that performs a calibration with external standardization (sol
 1. Download and install R. The script is written to be used from the command line with Rscript, but I will adapt it for Rstudio in the future.
 2. Run the setup.r script. This will install the packages and dependencies you need. Navigate to the directory Quantification-Buddy, and type `Rscript setup.r`. If `Rscript` is not found, that probably means it is not in your PATH.
 3. Open the script `qbuddy.r` in a text editor (vim, notepad, nano, etc), and edit the variables in the top of the file according to your need.
-4. Now you can use me! To get instructions, just type `Rscript qbuddy.r` and I will tell you which files I need and in which order. These are described bellow.
+4. Now you can use me! To get instructions, just type `Rscript qbuddy.r` and I will tell you which files I need and in which order. These are described bellow. Correctly formated sample files can be found in `Sample_Files`.
 
 ## Files Needed
 
