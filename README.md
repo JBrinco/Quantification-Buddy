@@ -29,13 +29,17 @@ The program will output, in addition to all the juicy data you need, a graphical
 
 ![Image of calibration curve for Captan](Captan.png)
 
+## Helping out
+
+I am not a computer programmer, nor have any formal education therein. If you would like to improve or add functionality, please fork and make a pull request. There is no "Authors" file, but I can make one and put your name in it if you want to :)
+
 ## Development
 
 - [x] Basic functionality with one csv input of calibration and another of sample signal values. Outputs results to CSV.
 - [x] Outputs good looking calibration curves with formulas to pdf.
 - [x] Can process multiple calibrations at once, and one single sample signal file with values for all calibrations.
 - [x] Can read columns and decide if internal standard was used or not. (two different scripts).
-- [x] Options parsing, single script works with and withought IS. (Uses boolean variables at the top of the script. optparse and argparse were not working properly. If you want to help, please do.
+- [x] Options parsing, single script works with and withought IS. (Uses boolean variables at the top of the script. optparse and argparse were not working properly. If you want to help, please do).
 - [ ] Add support for Recovery calculation and adjustment of sample concentration based on recovery percentage and optional dilution factor.
 - [ ] Writes the first column automatically in the Calibration Results (Slope, Intercept, etc.)
 - [ ] Finds rows in which samples have the same name and calculates the median and standard deviation.
