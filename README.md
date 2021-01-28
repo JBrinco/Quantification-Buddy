@@ -35,6 +35,7 @@ The program will output, in addition to all the juicy data you need, a graphical
 - [x] Can process multiple calibrations at once, and one single sample signal file with values for all calibrations.
 - [x] Can read columns and decide if internal standard was used or not. (two different scripts).
 - [ ] Options parsing, single script works with and withought IS.
+- [ ] Writes the first column automatically in the Calibration Results (Slope, Intercept, etc.)
 - [ ] Finds rows in which samples have the same name and calculates the median and standard deviation.
 - [ ] Add support for Recovery calculation and adjustment of sample concentration based on recovery percentage and optional dilution factor.
 - [ ] Nice looking .ods and .xlsx file for collecting the data and formatting correctly.
