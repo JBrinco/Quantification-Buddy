@@ -175,17 +175,13 @@ write.csv(cal_results, file = args[3], row.names = FALSE, quote = FALSE)
 
 	#Write to PDF!. Can also write to svg by replacing pdf() with svg(), and replacing .pdf with .svg above
 	pdf(pdf_file_name)
-
 	calibration.plot
-
 	dev.off()
 
 
 
 
-
-
-####Calculation for Samples
+####Calculation for Samples###############
 
 samples = read.csv(args[1], header=TRUE)
 
