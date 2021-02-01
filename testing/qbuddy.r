@@ -7,7 +7,7 @@
 
 InternalStandard <- TRUE #TRUE if you want to calculate with internal standard, FALSE otherwise.
 CalculateRecovery <- TRUE #TRUE if you want to calculate recoveries instead of the normal operation.
-	WriteRecovery <- TRUE #Will write the average and standard deviation of the recovery calculated into the Calibration file, to be used after.
+	WriteRecovery <- TRUE #Will write the average and standard deviation of the recovery calculated into the Calibration file, to be used after. If set to FALSE, with display recovery values and write them to optional [Recovery_Output.csv] file.
 UseRecovery <- FALSE #TRUE if you want to include recovery values when calculating sample values. WILL ONLY WORK IF YOU ALREADY CALCULATED THE RECOVERIES (see CalculatedRecovery).
 Dilution <- FALSE #True if you want to use dilution factor in the calculation. Will look for "Dilution" column in sample signal file.
 
@@ -27,11 +27,11 @@ pacman::p_load(pacman, ggplot2, stringr)
 # test if there are enough arguments.
 if (! CalculateRecovery) {
  if (length(args)<=3) {
- 	stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [Sample_signal.csv] [Calculated_results.csv] [Calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE!", call.=FALSE)
+ 	stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [Sample_signal.csv] [Calculated_results.csv] [Calibration_output.csv], [Calibration_signal.csv]. \n Note that the last file (calibration signal) should have the name of the compound, and exactly the same name as in its corresponding row in the sample signal file (so that the program knows which row to use in that file) This is CASE SENSITIVE! \n The file names can be whatever you like, just as long as you write them in the right order!", call.=FALSE)
  }
 } else {
 	if (length(args)<=1){
-		stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [Recovery_signal.csv] [Calibration_Signal.csv] \n If you want to calculate Sample values instead of recovery, set CalculateRecovery to FALSE", call.=FALSE)}
+		stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [Recovery_signal.csv] [Calibration_Signal.csv] [(OPTIONAL) Recovery_Output.csv] \n Note that the script will always look for the first two arguments. If you put the Recovery output in first or second place, you will get an error. \n If you want to calculate Sample values instead of recovery, set CalculateRecovery to FALSE. \n The file names can be whatever you like, just as long as you write them in the right order!", call.=FALSE)}
 }
 
 
@@ -52,11 +52,8 @@ CIS <- any(str_detect(names(calibration), "ConcIS", negate = FALSE), na.rm = TRU
 
 if (InternalStandard) {
 if (SIS) {
-	if (CIS) {
-		print("Found Everything! Hurray!!!!")
-
-		} else {
-			stop("SignalIS column found but not ConcIS. Are you tying to trick me? Please check your CSV! :)")
+	if (! CIS) {
+		stop("SignalIS column found but not ConcIS. Are you tying to trick me? Please check your CSV! :)")
 		}
 } else if (CIS) {
 	stop("ConcIS column found but not SignalIS. Are you trying to trick me? Please check your CSV! :)")
@@ -150,13 +147,33 @@ if (CalculateRecovery) {
 			recovery$Recovery <- (recovery$RealConcSpiked / recovery$ConcSpiked)
 			}
 		}
-	print(recovery)
-	#Write recovery value to optionally passed output file.
+		recoverymean <- c(mean(recovery$Recovery))
+		recoverysd <- c(sd(recovery$Recovery)) #Standard Deviation
+		recovery$RecoveryPercent <- round((recovery$Recovery * 100), digits = 2)
 
 
 	#Calculates average and standard deviation of calculated recoveries and writes them to the calibration CSV
+	if (WriteRecovery) {
 
 
+
+
+
+
+
+	} else { #If WriteRecovery is set to FALSE, will output the recovery values to the terminal, and optionally to [Results_Output.csv] file.
+		print("The recovery values (in %) are:")
+		print(recovery$RecoveryPercent)
+
+		#Write recovery value to optionally passed output file. If a third argument was passed, write the thing.
+		if (! is.na(args[3])) {
+			RecoveryResults = read.csv(args[3], header=TRUE)
+			RecoveryResults$temp_name <- (recovery$RecoveryPercent)
+			colnames(RecoveryResults)[colnames(RecoveryResults) == "temp_name"] <- compound_name
+			write.csv(RecoveryResults, file = args[3], row.names = FALSE, quote = FALSE)
+
+			}
+	}
 	quit ()
 }
 
