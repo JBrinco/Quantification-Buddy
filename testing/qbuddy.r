@@ -8,7 +8,6 @@
 InternalStandard <- TRUE #TRUE if you want to calculate with internal standard, FALSE otherwise.
 CalculateRecovery <- TRUE #TRUE if you want to calculate recoveries instead of the normal operation.
 	WriteRecovery <- TRUE #Will write the average and standard deviation of the recovery calculated into the Calibration file, to be used after.
-	SampleSpiked <- TRUE #If you used spiked samples for the recovery study, set TRUE. It will look for "Signal" and "SignalRec" (unspiked and spiked signal, respectively). If set to false, will only look for SignalRec (and assumes you spiked a blank sample).
 UseRecovery <- FALSE #TRUE if you want to include recovery values when calculating sample values. WILL ONLY WORK IF YOU ALREADY CALCULATED THE RECOVERIES (see CalculatedRecovery).
 Dilution <- FALSE #True if you want to use dilution factor in the calculation. Will look for "Dilution" column in sample signal file.
 
@@ -32,7 +31,7 @@ if (! CalculateRecovery) {
  }
 } else {
 	if (length(args)<=1){
-		stop("Not enough Arguments! \n Usade: Rscript qbuddy.r [Recovery_signal.csv] [Calibration_Signal.csv]", call.=FALSE)}
+		stop("Not enough Arguments! \n Usage: Rscript qbuddy.r [Recovery_signal.csv] [Calibration_Signal.csv] \n If you want to calculate Sample values instead of recovery, set CalculateRecovery to FALSE", call.=FALSE)}
 }
 
 
@@ -127,27 +126,38 @@ if (CalculateRecovery) {
 	recovery = read.csv(args[1], header=TRUE)
 
 	if (InternalStandard) {
-		#Calculates adjusted values for internal standard
-		recovery$adj_signal_spiked <- (recovery$SignalSpiked / recovery$SignalSpikedIS)
-		recovery$adj_signal <- (recovery$Signal / recovery$SignalIS)
+		#Calculates adjusted spiked value for internal standard and concentration of spiked samples
+		recovery$RealConcSpiked <- ((((recovery$SignalSpiked / recovery$SignalSpikedIS) - intercept) / slope) * recovery$ConcIS)
 
-		#Calculates concentration of spiked and non spiked sample
-		recovery$RealConcSpiked <- (((recovery$adj_signal_spiked - intercept) / slope) * recovery$ConcIS)
-		recovery$RealConc <- (((recovery$adj_signal - intercept) / slope) * recovery$ConcIS)
+		#Tests if the signal is not zero (real sample spiked, will take it into account). Calculates adjusted value for non-spiked sample, calibrates, and calculates recovery value.
+		if (recovery[1, "Signal"] != 0) {
+			recovery$RealConc <- ((((recovery$Signal / recovery$SignalIS) - intercept) / slope) * recovery$ConcIS)
+			recovery$Recovery <- ((recovery$RealConcSpiked - recovery$RealConc) / recovery$ConcSpiked)
 
-		#Calculates Recovery
-		recovery$Recovery <- ((recovery$RealConcSpiked - recovery$RealConc) / recovery$ConcSpiked)
-		print(recovery)
-
-
-	} #else {
+		} else {
+			recovery$Recovery <- (recovery$RealConcSpiked / recovery$ConcSpiked)
+		}
 
 
+	} else {
+		recovery$RealConcSpiked <- ((recovery$SignalSpiked - intercept) / slope)
+
+		if (recovery[1, "Signal"] != 0) {
+			recovery$RealConc <- ((recovery$Signal - intercept) / slope)
+			recovery$Recovery <- ((recovery$RealConcSpiked - recovery$RealConc) / recovery$ConcSpiked)
+
+		} else {
+			recovery$Recovery <- (recovery$RealConcSpiked / recovery$ConcSpiked)
+			}
+		}
+	print(recovery)
+	#Write recovery value to optionally passed output file.
 
 
+	#Calculates average and standard deviation of calculated recoveries and writes them to the calibration CSV
 
 
-quit ()
+	quit ()
 }
 
 
