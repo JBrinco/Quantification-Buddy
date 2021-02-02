@@ -147,21 +147,20 @@ if (CalculateRecovery) {
 			recovery$Recovery <- (recovery$RealConcSpiked / recovery$ConcSpiked)
 			}
 		}
-		recoverymean <- c(mean(recovery$Recovery))
-		recoverysd <- c(sd(recovery$Recovery)) #Standard Deviation
-		recovery$RecoveryPercent <- round((recovery$Recovery * 100), digits = 2)
 
+		#Calculation of mean, standard deviation and percentage.
 
 	#Calculates average and standard deviation of calculated recoveries and writes them to the calibration CSV
 	if (WriteRecovery) {
-
-
-
-
-
+		CalibrationWithRecovery <- read.csv(args[2], header=TRUE)
+		CalibrationWithRecovery$RecoveryMean <- round(mean(recovery$Recovery), digits = 7)
+		CalibrationWithRecovery$RecoverySD <- round(sd(recovery$Recovery), digits = 7)
+		print(CalibrationWithRecovery)
+		write.csv(CalibrationWithRecovery, file = args[2], row.names=FALSE, quote=FALSE)
 
 
 	} else { #If WriteRecovery is set to FALSE, will output the recovery values to the terminal, and optionally to [Results_Output.csv] file.
+		recovery$RecoveryPercent <- round((recovery$Recovery * 100), digits = 2)
 		print("The recovery values (in %) are:")
 		print(recovery$RecoveryPercent)
 
