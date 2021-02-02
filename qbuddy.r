@@ -2,6 +2,7 @@
 
 #E-mail: j.brinco@campus.fct.unl.pt
 #This program is Free Software! Under the GNU GPL v3 :)
+#Write Rscript qbuddy.r in the command line to get instructions! You will get a different answer if CalculateRecovery is set to FALSE or TRUE.
 
 #############OPTIONS#########################
 
