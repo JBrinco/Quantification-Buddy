@@ -45,6 +45,7 @@ I am not a computer programmer, nor have any formal education therein. If you wo
 - [ ] Finds rows in which samples have the same name and calculates the median and standard deviation.
 - [ ] Nice looking .ods and .xlsx file for collecting the data and formatting correctly.
 - [ ] Calculates Cook's distance, outputs strange data points for the user to check, and offers option to automatically remove outliers, both in calibration and samples.
+- [ ] Calculates compound standard deviation (with calibration, Recovery, etc.)
 - [ ] Better and prettier publication grade scatter plots.
 - [ ] Adapted to be used interactively with RStudio.
 

@@ -6,10 +6,10 @@
 #############OPTIONS#########################
 
 InternalStandard <- TRUE #TRUE if you want to calculate with internal standard, FALSE otherwise.
-CalculateRecovery <- TRUE #TRUE if you want to calculate recoveries instead of the normal operation.
+CalculateRecovery <- FALSE #TRUE if you want to calculate recoveries instead of the normal operation.
 	WriteRecovery <- TRUE #Will write the average and standard deviation of the recovery calculated into the Calibration file, to be used after. If set to FALSE, with display recovery values and write them to optional [Recovery_Output.csv] file.
-UseRecovery <- FALSE #TRUE if you want to include recovery values when calculating sample values. WILL ONLY WORK IF YOU ALREADY CALCULATED THE RECOVERIES (see CalculatedRecovery).
-Dilution <- FALSE #True if you want to use dilution factor in the calculation. Will look for "Dilution" column in sample signal file.
+UseRecovery <- TRUE #TRUE if you want to include recovery values when calculating sample values. WILL ONLY WORK IF YOU ALREADY CALCULATED THE RECOVERIES (see CalculatedRecovery).
+Dilution <- TRUE #True if you want to use dilution factor in the calculation. Will look for "Dilution" column in sample signal file. The values there should be equal to (final volume of the solution) divided by (Volume of parent solution used). If several dilutions were performed, it should be the total diluiton.
 
 
 
@@ -265,6 +265,8 @@ samples = read.csv(args[1], header=TRUE)
 #Change the name of the column with signal values in samples data frame to temporary name. The name of the column MUST BE the same as the one in the calibration file.
 colnames(samples)[colnames(samples) == compound_name ] <- "temp_name"
 
+
+
 if (InternalStandard) {
 
 	#If SignalIS column is not present in sample file, return an error. Separated into a variable for readability.
@@ -276,12 +278,43 @@ if (InternalStandard) {
 	#Calculate adjusted signal based on SampleIS from samples.
 	samples$adj_signal <- (samples$temp_name / samples$SignalIS)
 
-	#Calculates values and puts them in column temp_results
-	samples$temp_results <- (((samples$adj_signal - intercept) / slope) * samples$ConcIS)
-} else {
+	#Do you want recovery adjustment?
+	if (UseRecovery) {
 
-	#Calculates values withought IS and puts them in column temp_results
-	samples$temp_results <- ((samples$Signal - intercept) / slope)
+		#Test if recovery was already calculated
+		if (! (any(str_detect(names(calibration), "RecoveryMean", negate = FALSE), na.rm = TRUE))) {
+			  stop("Recoveries were not yet calculated, or were not written to the calibration data file! Please run the script with CalculateRecovery and WriteRecovery both TRUE, or use SetRecovery to FALSE.")
+	}
+
+		#Calculates values and puts them in column temp_results
+		samples$temp_results <- ((((samples$adj_signal - intercept) / slope) * samples$ConcIS) / calibration[1, "RecoveryMean"])
+
+	} else {
+		#Calculates values withought Recovery adjustment
+		samples$temp_results <- (((samples$adj_signal - intercept) / slope) * samples$ConcIS)
+	}
+} else {
+	#Calculates values withought IS
+	if (UseRecovery) {
+		#Test if recovery was already calculated
+		if (! (any(str_detect(names(calibration), "RecoveryMean", negate = FALSE), na.rm = TRUE))) {
+			  stop("Recoveries were not yet calculated, or were not written to the calibration data file! Please run the script with CalculateRecovery and WriteRecovery both TRUE, or set UseRecovery to FALSE.")
+		}
+
+		samples$temp_results <- (((samples$Signal - intercept) / slope) / calibration[1, "RecoveryMean"])
+
+	} else {
+		samples$temp_results <- ((samples$Signal - intercept) / slope )
+	}
+}
+
+#Adjust dilution, if it is true
+if (Dilution) {
+	if (! (any(str_detect(names(samples), "Dilution", negate = FALSE), na.rm = TRUE))) {
+			  stop("No \"Dilution\" column found in Sample_signal file. Please add it, or set Dilution to FALSE")
+		}
+
+	samples$temp_results <- (samples$temp_results * samples$Dilution)
 }
 
 #Read csv file where all the results go
