@@ -1,0 +1,1006 @@
+
+---------------------
+Captan
+---------------------
+Model parameters:
+Slope: 3.22786Intercept: -0.21575Coeficient of determination: 0.96937Limit of Detection: 88.43376Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+Slope: 4.52056Intercept: 0.11567Coeficient of determination: 0.91124Limit of Detection: 155.26901Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+Slope: 3.46825Intercept: 0.49390Coeficient of determination: 0.87280Limit of Detection: 189.92252Limit of Quantification: 575.52277
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:37:18.417144
+###################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:37:18.418652
+###################
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:37:18.420119
+###################
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:39:08
+###################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:39:08
+###################
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+
+
+###################
+Q-Buddy ran on: 2021-04-04 20:39:08
+###################
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+###################
+Q-Buddy ran on: 04-04-2021 20:39:31
+###################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+###################
+Q-Buddy ran on: 04-04-2021 20:39:31
+###################
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+
+
+###################
+Q-Buddy ran on: 04-04-2021 20:39:31
+###################
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+###################
+Q-Buddy ran on: 04-04-2021 20:40:27
+###################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+########################
+Q-Buddy ran on: 04-04-2021 20:41:01
+########################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:41:33
+##############################
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:41:59
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:50:05
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:50:40
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:51:01
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:56:39
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:56:50
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:57:16
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:57:41
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:58:09
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 20:58:18
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:02:36
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:03:30
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:03:56
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:04:00
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:04:15
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:06:19
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:06:29
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:06:36
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 3.22786
+Intercept: -0.21575
+Coeficient of determination: 0.96937
+Limit of Detection: 88.43376
+Limit of Quantification: 267.98109
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 4.52056
+Intercept: 0.11567
+Coeficient of determination: 0.91124
+Limit of Detection: 155.26901
+Limit of Quantification: 470.51215
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 3.46825
+Intercept: 0.49390
+Coeficient of determination: 0.87280
+Limit of Detection: 189.92252
+Limit of Quantification: 575.52277
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:10:30
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 5282.25649
+Intercept: -676339.03972
+Coeficient of determination: 0.84075
+Limit of Detection: 0.43304
+Limit of Quantification: 1.31225
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 7479.43705
+Intercept: -812275.40205
+Coeficient of determination: 0.89930
+Limit of Detection: 0.33295
+Limit of Quantification: 1.00894
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 5833.55270
+Intercept: -433255.46800
+Coeficient of determination: 0.88137
+Limit of Detection: 0.36503
+Limit of Quantification: 1.10616
+
+
+
+
+
+##############################
+Q-Buddy ran on: 04-04-2021 21:11:03
+##############################
+
+---------------------
+Captan
+---------------------
+Model parameters:
+
+Slope: 5282.25649
+Intercept: -676339.03972
+Coeficient of determination: 0.84075
+Limit of Detection: 0.43304
+Limit of Quantification: 1.31225
+---------------------
+Terbutylazine
+---------------------
+Model parameters:
+
+Slope: 7479.43705
+Intercept: -812275.40205
+Coeficient of determination: 0.89930
+Limit of Detection: 0.33295
+Limit of Quantification: 1.00894
+---------------------
+Metolachlor
+---------------------
+Model parameters:
+
+Slope: 5833.55270
+Intercept: -433255.46800
+Coeficient of determination: 0.88137
+Limit of Detection: 0.36503
+Limit of Quantification: 1.10616

@@ -1,9 +1,11 @@
 import argparse
 import sys
 import os
+import datetime
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from scipy import stats
 from matplotlib.backends.backend_pdf import PdfPages
 
@@ -72,6 +74,9 @@ if args.verbose:
     print("\nWARNING: If any of these is not a compound, it might be causing an error. Please remove that column from your calibration file!")
 
 
+if args.print:
+            with open(args.print, 'a') as outfile:
+                outfile.write('\n\n\n\n\n\n##############################\nQ-Buddy ran on: ' + str(datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')) + '\n##############################\n')
 
 
 
@@ -100,32 +105,83 @@ if args.int_standard:
             print("Limit of Detection: " + str(format(LOD, '.5f')))
             print("Limit of Quantification: " + str(format(LOQ, '0.5f')))
 
+        if args.print:
+            with open(args.print, 'a') as outfile:
+                outfile.write('\n---------------------\n' + analyte + '\n---------------------\n')
+                outfile.write("Model parameters:\n")
+                outfile.write("\nSlope: " + str(format(slope, '.5f')))
+                outfile.write("\nIntercept: " + str(format(intercept, '.5f')))
+                outfile.write("\nCoeficient of determination: " + str(format(r2, '.5f')))
+                outfile.write("\nLimit of Detection: " + str(format(LOD, '.5f')))
+                outfile.write("\nLimit of Quantification: " + str(format(LOQ, '0.5f')))
+
+
+        #PLOT####
+
+        # plot = sns.regplot(x="AdjustedConc", y=string, data=cal,
+        # line_kws={'label':"y={0:.5f}x+{1:.5f}".format(slope,intercept)})
+        # plot.legend()
+        # plt.show()
+
+
+
+
         #Calculate the sample signal!
         results[analyte] = (((samples[analyte] / samples['SignalIS']) - intercept) / slope) * samples['ConcIS']
 
 
-        #Optional calculate residuals
 
 
 
 
 
 else:
-    y = cal['Signal']
-    x = cal[['Conc']]
-    x = sm.add_constant(x)
-    x = sm.add_constant(x)
-    model = sm.OLS(y, x).fit()
-    print(analyte + '\n')
-    # print(model.summary())
-    print(list(model.params))
-    print(model.rsquared)
-    print(model)
-    plt.scatter(cal.Conc, cal.Signal,  color='black')
-    plt.title('Adjusted Values')
-    plt.xlabel('Adjusted Concentration')
-    plt.ylabel('Adjusted Signal')
-    plt.show()
+    results["Sample"] = samples["Sample"]
+
+    for analyte in compounds: #Per analyte found in the parser above, run the calibration steps
+        slope, intercept, rvalue, pvalue, stderr = stats.linregress(cal['Conc'],cal[analyte]) #stats.linregress returns an object with these atributes: slope, intercept, rvalue, pvalue, stderr and intercept_stderr. I could also pull them one by one.
+        r2 = rvalue * rvalue
+        LOD = ((3.3 * stderr) / slope)
+        LOQ = ((10 * stderr) / slope)
+
+        if args.verbose:
+            print('\n---------------------\n' + analyte + '\n---------------------\n')
+            print("Model parameters:\n")
+            print("Slope: " + str(format(slope, '.5f')))
+            print("Intercept: " + str(format(intercept, '.5f')))
+            print("Coeficient of determination: " + str(format(r2, '.5f')))
+            print("Limit of Detection: " + str(format(LOD, '.5f')))
+            print("Limit of Quantification: " + str(format(LOQ, '0.5f')))
+
+        if args.print:
+            with open(args.print, 'a') as outfile:
+                outfile.write('\n---------------------\n' + analyte + '\n---------------------\n')
+                outfile.write("Model parameters:\n")
+                outfile.write("\nSlope: " + str(format(slope, '.5f')))
+                outfile.write("\nIntercept: " + str(format(intercept, '.5f')))
+                outfile.write("\nCoeficient of determination: " + str(format(r2, '.5f')))
+                outfile.write("\nLimit of Detection: " + str(format(LOD, '.5f')))
+                outfile.write("\nLimit of Quantification: " + str(format(LOQ, '0.5f')))
+
+
+        #PLOT####
+
+        plot = sns.regplot(x="Conc", y=analyte, data=cal,
+        line_kws={'label':"y={0:.5f}x+{1:.5f}".format(slope,intercept)})
+        plot.legend()
+        plt.show()
+
+
+
+
+        #Calculate the sample signal!
+        results[analyte] = ((samples[analyte] - intercept) / slope)
+
+
+
+
+
+
 
 print('\n\n---------------------\n  Results  \n---------------------\n')
 print(results)
