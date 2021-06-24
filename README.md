@@ -1,6 +1,6 @@
 # Quantification-Buddy
 
-__This is under development!__
+__This is under development and currently being ported to Python__
 Quantification using traditional calibration and internal standards from the command line.
 
 ## What am I
@@ -39,8 +39,6 @@ An example is provided for each file in `Sample_Files/`. Please note that the co
 ## Graphical Output
 
 The program will output, in addition to all the juicy data you need, a graphical representation of your calibration curve. Its format can be changed in the code, obviously.
-
-![Image of calibration curve for Captan](Captan.png)
 
 ## Helping out
 
